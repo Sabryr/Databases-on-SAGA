@@ -1,0 +1,37 @@
+SAGA /cluster/shared/databases
+
+├── blast
+│   ├── 04-02-2021
+│   ├── 25-10-2019
+│   ├── latest -> 04-02-2021
+│   └── scripts
+├── BUSCO
+│   ├── 12-08-2020
+│   
+├── Kraken2
+│   ├── 12-08-2020-no-NT
+│   ├── 13-04-2021-no-NT
+│   ├── 2.0.9-beta-foss-2018b-Perl-5.28.0
+│   ├── 25-06-2020
+│   
+└── references
+    └── Homo_sapiens
+
+-------------------------------------------------------
+
+SAGA /cluster/shared/biobases
+
+├── classification_dbs
+│   ├── kraken1_db_56G
+│   ├── minikraken_20171013_4GB
+│   ├── minikraken_20171101_4GB_dustmasked
+│   ├── minikraken_20171101_4GB_dustmasked.tgz
+│   ├── minikraken_20171101_8GB_dustmasked
+│   ├── minikraken_2_8GB_20200312
+│   └── ncbi_16s_ribosomal_RNA_db
+├── example_README.txt
+├── genome_references
+│   ├── Atlantic.salmon
+│   ├── chinook_salmon
+│   └── Gallus_gallus
+└── README.txt
