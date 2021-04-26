@@ -1,0 +1,10 @@
+## List of databases that are needed to be setup centrally 
+blast
+BUSCO
+Kraken2
+Genome references
+
+
+## Procedure
+For each of the databases above we shall have a sepecrate folder with 
+procedure and scripts needed.
