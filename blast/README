@@ -10,3 +10,12 @@ CDIR=/cluster/shared/databases/blast/$TIME_STAMP
 ##Create a database list to be downloaded
 update_blastdb.pl --showall  > db.list
 
+## Download
+for db in $(cat db.list )
+do
+        echo "Now processing "$db"  started "
+        date
+        update_blastdb.pl --decompress --timeout=600 $db
+        sleep 60
+done
+
