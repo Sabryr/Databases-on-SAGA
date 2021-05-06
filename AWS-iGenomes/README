@@ -1,0 +1,74 @@
+# How to sync AWS-iGenomes to saga
+https://ewels.github.io/AWS-iGenomes/
+
+This resource hosts commonly used bioinformatics reference genomes with the help
+of a grant from AWS Programs for Research and Education. In order to get the 
+references, you need to sync the files from S3 to your EC2 environment. 
+This web page contains two tools to help you with that - a command builder
+and a command-line script.
+
+For more information about this resource, please see the GitHub readme at 
+https://github.com/ewels/AWS-iGenomes.
+
+## Get an AWS account 
+1. Inorder to use this service we need an AWS account 
+
+2. Connection details
+ Bucket Name: ngi-igenomes
+ Bucket ARN: arn:aws:s3:::ngi-igenomes
+ Region: eu-west
+
+* it is important to run this in the same region 
+(to minize cost for the provider)
+
+##  How to set this up on saga
+
+module purge
+module load Python/3.8.6-GCCcore-10.2.0
+pip install --user  awscli
+
+After installing veryfy that the instlation works
+
+[r@login-3.SAGA]$ python -c "import awscli; print(awscli.__version__)"
+1.19.59
+[r@login-3.SAGA]$ module list
+[r@login-3.SAGA]$ python -c "import awscli; print(awscli.__version__)"
+1.19.59
+[r@login-3.SAGA]$ aws --version
+aws-cli/1.19.59 Python/3.8.6 Linux/3.10.0-1160.6.1.el7.x86_64 botocore/1.20.59
+
+
+## Register with aws
+The following will create a profile you can use with AWS 
+
+aws configure --profile AWS-iGenomes
+e.g.
+ ~ $ aws configure --profile AWS-iGenomes
+AWS Access Key ID [None]: <AWS access key>
+AWS Secret Access Key [None]: <AWS Secret>
+Default region name [None]: eu-west
+Default output format [None]: 
+
+### check connection 
+#### below should not return anaything 
+aws s3 ls --profile  AWS-iGenomes
+### To do chekc with aws test-connection
+
+
+## Get scripts
+https://ewels.github.io/AWS-iGenomes/aws-igenomes.sh
+chmod +x aws-igenomes.sh
+
+## Get the genome list
+curl https://raw.githubusercontent.com/ewels/AWS-iGenomes/master/ngi-igenomes_file_manifest.txt > ngi-igenomes_file_manifest.txt
+
+Extract the unique species (this might take a while):
+for spc in $(cat ngi-igenomes_file_manifest.txt)
+do 
+  echo $spc | awk -F "/" '{print $5"/"$6}' >> species_source.txt
+done
+
+
+
+
+
