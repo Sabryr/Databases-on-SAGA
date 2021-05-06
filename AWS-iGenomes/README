@@ -11,7 +11,7 @@ For more information about this resource, please see the GitHub readme at
 https://github.com/ewels/AWS-iGenomes.
 
 ## Get an AWS account 
-1. Inorder to use this service we need an AWS account 
+1. In order to use this service we need an AWS account 
 
 2. Connection details
  Bucket Name: ngi-igenomes
@@ -19,7 +19,7 @@ https://github.com/ewels/AWS-iGenomes.
  Region: eu-west
 
 * it is important to run this in the same region 
-(to minize cost for the provider)
+(to minimize cost for the provider)
 
 ##  How to set this up on saga
 
@@ -27,7 +27,7 @@ module purge
 module load Python/3.8.6-GCCcore-10.2.0
 pip install --user  awscli
 
-After installing veryfy that the instlation works
+After installing verify that the installation works
 
 [r@login-3.SAGA]$ python -c "import awscli; print(awscli.__version__)"
 1.19.59
@@ -50,25 +50,36 @@ Default region name [None]: eu-west
 Default output format [None]: 
 
 ### check connection 
-#### below should not return anaything 
+#### below should not return anything 
 aws s3 ls --profile  AWS-iGenomes
-### To do chekc with aws test-connection
+### To do check with aws test-connection
 
 
 ## Get scripts
 https://ewels.github.io/AWS-iGenomes/aws-igenomes.sh
 chmod +x aws-igenomes.sh
 
+**I have broken down to several steps below so debugging easier
+**After setting up the pipeline, this could be one pipeline
+
 ## Get the genome list
 curl https://raw.githubusercontent.com/ewels/AWS-iGenomes/master/ngi-igenomes_file_manifest.txt > ngi-igenomes_file_manifest.txt
 
-Extract the unique species (this might take a while):
+## Extract the unique species (this might take a while):
 for spc in $(cat ngi-igenomes_file_manifest.txt)
 do 
   echo $spc | awk -F "/" '{print $5"/"$6}' >> species_source.txt
 done
 
+sort  species_source.txt | uniq > unique_species_source.txt
+
+## Fabricate s3 urls
+for link in $(cat unique_species_source.txt)
+do 
+  echo aws s3 --profile AWS-iGenomes sync "s3://ngi-igenomes/igenomes/"$link" /storage/databases/"$link >> aws.list
+done
 
 
-
+## Call aws.cli
+IFS=$'\n' ; for link in $(cat aws.list); do echo eval $link; done;
 
