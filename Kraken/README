@@ -1,0 +1,31 @@
+#This is two step process
+1. Download 
+2. Process
+
+## Download 
+module load Kraken2/2.1.1-foss-2020b-Perl-5.32.0
+TIME_STAMP="$(date +%Y-%m-%d)"
+export DBNAME=/cluster/shared/databases/Kraken2/TIME_STAMP
+
+for db in archaea bacteria plasmid viral human fungi plant protozoa UniVec UniVec_Core
+do 
+   kraken2-build --download-library $db --no-masking --db $DBNAME
+done;
+
+### Download and process taxonomy database
+kraken2-build --download-taxonomy --db $DBNAME
+
+Above is NT only, need to discuss with the ticket creater for more details about
+including all species
+https://rt.uninett.no/Ticket/Display.html?id=218269
+archaea bacteria plasmid viral human fungi plant protozoa nr nt UniVec UniVec_Core
+
+
+## Process
+use kraken2Build.slurm
+
+
+
+
+
+
