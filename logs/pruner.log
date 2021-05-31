@@ -1,0 +1,8 @@
+05/28/21 at 14:18 - Searching for old databases to delete
+No folder older than 90 days found in the blast directory
+No backup to delete
+No folder older than 90 days found in the Kraken2 directory
+No backup to delete
+No folder older than 90 days found in the BUSCO directory
+No backup to delete
+/cluster/shared/databases/admin/prune-databases.sh: line 17: cd: /cluster/shared/databases/AWS-iGenomes: No such file or directory

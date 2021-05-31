@@ -1,3 +1,5 @@
+#### N.B These instructions do not apply to the `db-updater.sh` script
+
 ## Procedure
 module purge
 module load BLAST+/2.11.0-gompi-2020b

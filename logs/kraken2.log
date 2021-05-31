@@ -1,0 +1,28 @@
+Started database update on Thu May 27 14:29:01 CEST 2021
+Downloading new database to /cluster/shared/databases/Kraken2/2021-05-27
+Running dl-library
+Step 1/2: Performing rsync file transfer of requested files
+Rsync file transfer complete.
+Step 2/2: Assigning taxonomic IDs to sequences
+All files processed, cleaning up extra sequence files... done, library complete.
+running dl-taxonomy
+Downloading nucleotide gb accession to taxon map... done.
+Downloading nucleotide wgs accession to taxon map... done.
+Downloaded accession to taxon map(s)
+Downloading taxonomy tree data... done.
+Uncompressing taxonomy data... done.
+Untarring taxonomy tree data... done.
+Running build process
+Creating sequence ID to taxonomy ID map (step 1)...
+Sequence ID to taxonomy ID map complete. [0.232s]
+Estimating required capacity (step 2)...
+Estimated hash table requirement: 1344779700 bytes
+Capacity estimation complete. [12.884s]
+Building database files (step 3)...
+Taxonomy parsed and converted.
+CHT created with 10 bits reserved for taxid.
+Completed processing of 624 sequences, 1041368937 bp
+Writing data to disk...  complete.
+Database files completed. [4m29.098s]
+Database construction complete. [Total: 4m42.377s]
+Finished updating database on Thu May 27 14:43:25 CEST 2021
