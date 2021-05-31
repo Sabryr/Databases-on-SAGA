@@ -48,8 +48,8 @@ Run `crontab -e`, then put the following line in it:
 ``` 
 This will create a cronjob that runs every 3 months at 02:20 on the 4th of the month.
 
-### Hardcoded path
+### Comments
 * The script will cd to `/cluster/shared/databases/databaseName` to check for old databases to remove.  
-* It will only delete directories with the naming patter `202[0-9]-[0-1][0-9]-[0-3][0-9]`, this will for instance delete a directory created `2023-10-30` as long as it is 90 days or older.
+* It will only delete directories with the naming pattern `202[0-9]-[0-1][0-9]-[0-3][0-9]`, this will for instance delete a directory named `2023-10-30` as long as it is 90 days or older and there are at least 4 directories of that pattern.
 
 Please open an issue if you have any questions.  
