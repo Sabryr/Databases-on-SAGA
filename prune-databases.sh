@@ -1,7 +1,8 @@
 #!/bin/bash
 ######################
-# Script made by Oskar Vidarsson <oskar.vidarsson@uib.no> 
-# Description: 
+# Script made by Oskar Vidarsson <oskar.vidarsson@uib.no>
+# Usage: ./prune-databases.sh
+# Description:
 # Find directories 90 days or older and delete them, but only if there are 
 # 4 or more directories. This avoids the deletion of all databases if they 
 # for some reason aren't updated anymore
