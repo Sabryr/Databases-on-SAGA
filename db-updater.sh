@@ -1,5 +1,11 @@
 #!/bin/bash
 
+######################
+# Script made by Oskar Vidarsson <oskar.vidarsson@uib.no>
+# Usage: ./db-updater.sh {blast,busco,kraken2}
+# This script will update the blast, busco or kraken2 databases
+######################
+
 trap exit SIGKILL ERR SIGTERM SIGINT
 
 set -e
