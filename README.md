@@ -39,7 +39,7 @@ These steps could probably be simplified by using variables and a config file, b
 ### Other
 Good to know for blast: `update_blastdb.pl --showall  > db.list` creates a list of all databases.
 
-### Database pruning script
+## Database pruning script
 Since no more than two old versions of each database should exist, and the databases get updated every 3 months, the `prune-databases.sh` script will take care of deleting old databases when there are more than 3 databases and one is older than 3 months  
 This is done automatically with a cron job that is setup as such:                                                                                                                                           
 Run `crontab -e`, then put the following line in it:                                                                                                                                                        
@@ -47,5 +47,9 @@ Run `crontab -e`, then put the following line in it:
 20 02 4 */3 * /cluster/shared/databases/admin/Databases-on-SAGA/prune-databases.sh >> /cluster/shared/databases/admin/Databases-on-SAGA/logs/pruner.log 2>&1
 ``` 
 This will create a cronjob that runs every 3 months at 02:20 on the 4th of the month.
+
+### Hardcoded path
+* The script will cd to `/cluster/shared/databases/databaseName` to check for old databases to remove.  
+* It will only delete directories with the naming patter `202[0-9]-[0-1][0-9]-[0-3][0-9]`, this will for instance delete a directory created `2023-10-30` as long as it is 90 days or older.
 
 Please open an issue if you have any questions.  
