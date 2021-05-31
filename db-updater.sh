@@ -21,12 +21,12 @@ finishMsg () {
 }
 
 mkdest() {
-        # Variable and path to the directory with the latest database
-        today="$(date +%Y-%m-%d)"
-        dest=/cluster/shared/databases/$1/$today
+	# Variable and path to the directory with the latest database
+	today="$(date +%Y-%m-%d)"
+	dest=/cluster/shared/databases/$1/$today
 
-        mkdir -p $dest
-        cd $dest
+	mkdir -p $dest
+	cd $dest
 }
 
 symlinkDB () {
@@ -37,11 +37,11 @@ buscoUpdate () {
 	mkdest "BUSCO"
 
 	# Make list of databases to download
-        curl https://busco-data.ezlab.org/v4/data/lineages/ |\
-        grep href | \
-        grep gz | \
-        awk -F "\"" '{print "https://busco-data.ezlab.org/v4/data/lineages/"$2}'> \
-        downloadlist.txt
+	curl https://busco-data.ezlab.org/v4/data/lineages/ |\
+	grep href | \
+	grep gz | \
+	awk -F "\"" '{print "https://busco-data.ezlab.org/v4/data/lineages/"$2}'> \
+	downloadlist.txt
 
 	# Download databases
 	while read -r dldb; do
@@ -52,8 +52,8 @@ buscoUpdate () {
 	# Unpack and delete if unpacking was successful
 	dbs=(*.tar.gz)
 	for db in ${dbs[@]}; do
-	        tar -zxvf $db && \
-	        rm ${db}
+		tar -zxvf $db && \
+		rm ${db}
 	done
 }
 
@@ -66,12 +66,12 @@ blastUpdate () {
 	# While loop that reads the db.list file and downloads the updated
 	# databases
 	while read -r db; do
-	        echo "Downloading "$db""
-	        date
-	        perl $wd/update_blastdb-05-17.pl --decompress --timeout=600 $db
-	        echo "$db database was downloaded"
-	        echo "Sleeping for 20 seconds"
-	        sleep 20
+		echo "Downloading "$db""
+		date
+		perl $wd/update_blastdb-05-17.pl --decompress --timeout=600 $db
+		echo "$db database was downloaded"
+		echo "Sleeping for 20 seconds"
+		sleep 20
 #	done < <(head -n 1 $wd/db.list)
 	done < $wd/db.list
 }
@@ -84,16 +84,16 @@ kraken2Update () {
 	echo "Downloading new database to $dest"
 
 	while read -r db; do
-	        echo "Running dl-library"
+		echo "Running dl-library"
 		$krakenBuild \
-	        --download-library $db \
-	        --no-masking \
-	        --db $dest
+		--download-library $db \
+		--no-masking \
+		--db $dest
 
-	        echo "running dl-taxonomy"
+		echo "running dl-taxonomy"
 		$krakenBuild \
-	        --download-taxonomy \
-	        --db $dest
+		--download-taxonomy \
+		--db $dest
 #	done < <(head -n 1 /cluster/shared/databases/Kraken2/db.list)
 	done < /cluster/shared/databases/Kraken2/db.list
 
