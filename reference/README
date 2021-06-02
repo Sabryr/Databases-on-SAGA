@@ -1,0 +1,12 @@
+#The procedure to add new species
+
+## Location 
+/cluster/shared/databases/references
+
+#Procedure
+The initial database is created using AWS-iGenomes 
+and described in
+https://github.com/Sabryr/Databases-on-SAGA/tree/main/AWS-iGenomes
+
+Subsequently when adding new genomes the following procedure has been setup.
+The example is on how to include the sheep genome
