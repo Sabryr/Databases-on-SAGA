@@ -15,7 +15,8 @@ The example is on how to include the sheep genome
 mkdir /cluster/shared/databases/references/Ovis_aries
 cd  /cluster/shared/databases/references/Ovis_aries
 
-2. Create source institute fdirectories 
+2. Create directories for each source institute
+
 mkdir {Ensembl,NCBI,UCSC}
 
 3. Set up procedure for specific databases 
