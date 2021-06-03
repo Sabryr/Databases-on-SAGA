@@ -10,3 +10,25 @@ https://github.com/Sabryr/Databases-on-SAGA/tree/main/AWS-iGenomes
 
 Subsequently when adding new genomes the following procedure has been setup.
 The example is on how to include the sheep genome
+
+1. Create a folder with name of the new genome
+mkdir /cluster/shared/databases/references/Ovis_aries
+cd /cluster/shared/databases/references/Ovis_aries
+
+2. Create source institute fdirectories 
+mkdir {Ensembl,NCBI,UCSC}
+
+3. Set up procedure for specific databases 
+cd /cluster/shared/databases/references/Ovis_aries/NCBI
+
+3.1 Create a README with the download source details 
+
+##Download location
+mkdir -p /cluster/shared/databases/references/Ovis_aries/NCBI/v4.0
+cd /cluster/shared/databases/references/Ovis_aries/NCBI/v4.0
+wget https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/298/735/GCA_000298735.2_Oar_v4.0/GCA_000298735.2_Oar_v4.0_genomic.fna.gz
+
+##Unzip
+gunzip GCA_000298735.2_Oar_v4.0_genomic.fna.gz
+
+
