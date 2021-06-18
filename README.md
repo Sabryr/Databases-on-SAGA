@@ -1,5 +1,14 @@
 # Databases-on-SAGA
 
+# End user documentation
+The following documentation is only applicable to the `blast`, `BUSCO` and `Kraken2` databases.  
+* The databases are updated every 3 months
+* We will keep two previous database versions in case you need them for anything
+* The path to the latest version of each database is `/cluster/shared/databases/databaseName/latest`
+   * In other words, if you want the path to the `blast` database, substitute `databaseName` in the path for `blast`
+   * If you want an older version you need to run e.g `ls -lh /cluster/shared/databases/blast` and check which versions are available
+
+# Developer documentation
 ## Basic usage
 Assuming that everything has been setup as described below, the basic operation is `./db-update.sh blast` to update the blast database manually, substitute `blast` for `busco` or `kraken2` to update them.
 
