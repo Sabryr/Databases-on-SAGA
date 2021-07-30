@@ -1,37 +1,69 @@
-SAGA /cluster/shared/databases
-
+.
+├── admin
+│   ├── Databases-on-SAGA
+│   ├── logs
+│   └── test
 ├── blast
 │   ├── 04-02-2021
+│   ├── 2021-05-27
+│   ├── 2021-07-29
 │   ├── 25-10-2019
-│   ├── latest -> 04-02-2021
+│   ├── latest -> /cluster/shared/databases/blast/2021-07-29
 │   └── scripts
+├── bowtie
 ├── BUSCO
 │   ├── 12-08-2020
-│   
+│   ├── 2021-05-27
+│   ├── 2021-07-29
+│   └── latest -> /cluster/shared/databases/BUSCO/2021-07-29
+├── homer
 ├── Kraken2
 │   ├── 12-08-2020-no-NT
 │   ├── 13-04-2021-no-NT
+│   ├── 2021-05-25
+│   ├── 2021-07-29
 │   ├── 2.0.9-beta-foss-2018b-Perl-5.28.0
 │   ├── 25-06-2020
-│   
-└── references
-    └── Homo_sapiens
+│   ├── kraken2
+│   ├── latest -> /cluster/shared/databases/Kraken2/2021-07-29
+│   └── logs
+├── module-trigers
+├── references
+│   ├── admin
+│   ├── Arabidopsis_thaliana
+│   ├── Bacillus_cereus_ATCC_10987
+│   ├── Bacillus_subtilis_168
+│   ├── Bos_taurus
+│   ├── Caenorhabditis_elegans
+│   ├── Canis_familiaris
+│   ├── Danio_rerio
+│   ├── Drosophila_melanogaster
+│   ├── Enterobacteriophage_lambda
+│   ├── Equus_caballus
+│   ├── Escherichia_coli_K_12_DH10B
+│   ├── Escherichia_coli_K_12_MG1655
+│   ├── Gallus_gallus
+│   ├── Glycine_max
+│   ├── Homo_sapiens
+│   ├── Macaca_mulatta
+│   ├── Mus_musculus
+│   ├── Mycobacterium_tuberculosis_H37RV
+│   ├── Oryza_sativa_japonica
+│   ├── Ovis_aries
+│   ├── Pan_troglodytes
+│   ├── PhiX
+│   ├── Pseudomonas_aeruginosa_PAO1
+│   ├── Rattus_norvegicus
+│   ├── Rhodobacter_sphaeroides_2.4.1
+│   ├── Saccharomyces_cerevisiae
+│   ├── Schizosaccharomyces_pombe
+│   ├── Sorangium_cellulosum_So_ce_56
+│   ├── Sorghum_bicolor
+│   ├── Staphylococcus_aureus_NCTC_8325
+│   ├── Sus_scrofa
+│   └── Zea_mays
+└── uniprot
+    ├── 2021-04-07
+    └── test
 
--------------------------------------------------------
-
-SAGA /cluster/shared/biobases
-
-├── classification_dbs
-│   ├── kraken1_db_56G
-│   ├── minikraken_20171013_4GB
-│   ├── minikraken_20171101_4GB_dustmasked
-│   ├── minikraken_20171101_4GB_dustmasked.tgz
-│   ├── minikraken_20171101_8GB_dustmasked
-│   ├── minikraken_2_8GB_20200312
-│   └── ncbi_16s_ribosomal_RNA_db
-├── example_README.txt
-├── genome_references
-│   ├── Atlantic.salmon
-│   ├── chinook_salmon
-│   └── Gallus_gallus
-└── README.txt
+66 directories
