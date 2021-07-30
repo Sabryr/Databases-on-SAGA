@@ -49,14 +49,14 @@ mkdest() {
 
 # Make list of databases to download
 urlExtractor () {
-	mapfile -t urls < <(curl "${1}" | \
+	mapfile -t urls < <(curl --retry 20 --retry-delay 7200 --connect-timeout 900 "${1}" | \
 	grep -o '".*.gz"' | \
 	awk -v url="${1}" -F "\"" '{print url$2}')
 }
 
 downloader () {
 	echo "Downloading ${1}"
-	wget -Nc --no-verbose ${1}
+	wget --retry-connrefused --wait=2h --timeout=900 -Nc --no-verbose ${1}
 }
 
 # Unpack and delete if unpacking was successful
