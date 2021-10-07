@@ -20,16 +20,13 @@ LOGFILE=/cluster/shared/databases/admin/Databases-on-SAGA/logs/$1-$DATE.log
 exec 3>&1 4>&2
 exec &> >(tee -a $LOGFILE) 2>&1
 
-green=$(tput setaf 2)
-reset=$(tput sgr 0)
-
 ###### Helper functions
 startMsg () {
-	printf "\n${green}[INFORMATION]${reset}: Started database update on $(date)\n"
+	printf "\n[INFORMATION]: Started database update on $(date)\n"
 }
 
 finishMsg () {
-	printf "\n${green}[INFORMATION]${reset}: Finished updating database on $(date)\n"
+	printf "\n[INFORMATION]: Finished updating database on $(date)\n"
 }
 
 # Symlink the new database to "latest"
@@ -56,7 +53,7 @@ urlExtractor () {
 
 downloader () {
 	echo "Downloading ${1}"
-	wget --retry-connrefused --wait=2h --timeout=900 -Nc --no-verbose ${1}
+	wget --no-check-certificate --retry-connrefused --wait=2h --timeout=900 -Nc --no-verbose ${1}
 }
 
 # Unpack and delete if unpacking was successful
@@ -71,10 +68,11 @@ archiveExtractor () {
 buscoUpdate () {
 	mkdest "BUSCO"
 
-	urlExtractor "https://busco-data.ezlab.org/v4/data/lineages/"
+	urlExtractor "https://busco-data.ezlab.org/v5/data/lineages/"
 	for url in ${urls[@]}; do
 		downloader ${url}
 		archiveExtractor ${url##*/}
+		find . -type f -name "*.faa.gz" -exec gunzip {} \;
 	done
 }
 
