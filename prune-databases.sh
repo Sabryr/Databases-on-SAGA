@@ -28,7 +28,11 @@ for dir in blast Kraken2 BUSCO; do
 		find . -mindepth 1 -maxdepth 1 -type d -name "202[0-9]-[0-1][0-9]-[0-3][0-9]" -mtime +90
 		find . -mindepth 1 -maxdepth 1 -type d -name "202[0-9]-[0-1][0-9]-[0-3][0-9]" -mtime +90 -execdir rm -r {} +
 	else
-		echo "No folder older than 90 days found in the $dir directory"
-		echo "No backup to delete"
+		if [[ $databases -le 3 ]]; then
+			echo "Only found $databases $dir databases, will not delete anything"
+		elif [[ $nrOldFolder -eq 0 ]]; then
+			echo "No folder older than 90 days found in the $dir directory"
+			echo "No backup to delete"
+		fi
         fi
 done
