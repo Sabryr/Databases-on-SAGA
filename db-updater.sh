@@ -35,13 +35,24 @@ symlinkDB () {
 }
 
 # Create and cd to the new "blast/year-month-day" folder
-mkdest() {
+mkdest () {
         # Variable and path to the directory with the latest database
         today="$(date +%Y-%m-%d)"
         dest=/cluster/shared/databases/$1/$today
 
         mkdir -p $dest
         cd $dest
+}
+
+dbAgeChecker () {
+	dbsAgeOver90=$(find . -maxdepth 1 -name "202[0-9]-[0-9][0-9]-[0-9][0-9]" -type d -mtime +90 | wc -l)
+	if (( $dbsAgeOver90 == 3 )); then
+		echo "executing main function"
+		main
+	else
+		echo "Newest database is less than 90 days old, will not download new database"
+		exit
+	fi
 }
 
 # Make list of databases to download
@@ -173,4 +184,4 @@ main () {
 	finishMsg
 }
 
-main
+dbAgeChecker
