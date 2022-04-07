@@ -50,7 +50,7 @@ dbAgeChecker () {
 		echo "executing main function"
 		main
 	else
-		echo "Newest database is less than 90 days old, will not download new database"
+		echo "Newest $database database is less than 90 days old, will not download new database"
 		exit
 	fi
 }
